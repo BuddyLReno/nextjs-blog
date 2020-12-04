@@ -1,0 +1,57 @@
+@import "variables";
+
+.post {
+  border: 1px solid map-get($palette, border);
+  position: relative;
+  border-radius: 5px;
+}
+
+.link {
+  display: block;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    border: none;
+  }
+}
+
+.thumbnail {
+  border-radius: 5px 5px 0 0;
+  
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 66.6%;
+  }
+}
+
+.header {
+  padding: 1.333rem 1.333rem 0;
+  margin-bottom: 0.833rem;
+}
+
+.title {
+  border-bottom: 1px solid map-get($palette, border);
+  padding-bottom: 0.833rem;
+  font-size: 1.333rem;
+  margin: 0;
+}
+
+.excerpt {
+  padding: 0 1.333rem;
+}
+
+.footer {
+  padding: 0 1.333rem 1.333rem;
+  margin-top: auto;
+}
+
+.publishDate {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: map-get($palette, meta);
+}

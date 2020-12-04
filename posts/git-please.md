@@ -1,0 +1,19 @@
+---
+title: 'Git Please: How to force push without being a jerk'
+date: '2020-11-30'
+photo: '/images/anakin.jpg'
+excerpt: "Learn how to force push to git without accidentally overwriting someone else's work!"
+---
+
+As the size of a dev team grows, so does the likelihood of someone doing a force push and overwriting someone else's code.
+
+Here's what a force push looks like in Git:
+
+```bash
+$ git push --force origin master
+# `--force` can also be written as `-f`
+```
+
+This command can cause all kinds of problems. It basically tells Git that _I don't care what is in origin/master. What I have is correct. Overwrite it._
+
+So what happens if a co-worker had changes committed to a branch that you haven't pulled down into your own repo? It gets overwritten, and your co-worker potentially has to re-do their work (or resurrect a commit or two if they still have it locally).

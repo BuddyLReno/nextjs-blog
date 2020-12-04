@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/nunito/Nunito-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Nunito-Italic";
+  src: url("/fonts/nunito/Nunito-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Nunito-Semibold";
+  src: url("/fonts/nunito/Nunito-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Nunito-Bold";
+  src: url("/fonts/nunito/Nunito-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Share Tech Mono";
+  src: url("/fonts/share-tech-mono/ShareTechMono-Regular.ttf")
+}
+
+$font: (
+  primary: ("Nunito",Helvetica,sans-serif),
+  italic: ("Nunito-Italic", Helvetica, sans-serif),
+  semibold: ("Nunito-Semibold", Helvetica, sans-serif),
+  bold: ("Nunito-Bold", Helvetica, sans-serif),
+  monospace: ("Share Tech Mono", Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace)
+);
+
+$palette: (
+  primary:       #555e69,
+  secondary:     darken(#555e69, 15%),
+  meta:          lighten(#555e69, 25%),
+  border:        lighten(#555e69, 55%),
+  bg:            lighten(#555e69, 60%),
+  accent:        #753AD8,
+  accent-blue:   #08B7CD,
+  accent-yellow: #F9DF00,
+  accent-orange: #F6640A
+);

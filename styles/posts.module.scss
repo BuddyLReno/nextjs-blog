@@ -1,0 +1,24 @@
+.articles {
+  padding: 0 1.333rem;
+  max-width: 1040px;
+  display: grid;
+  grid-row-gap: 3vw;
+  grid-template-areas: 
+    "header"
+    ".";
+
+  @media only screen and (min-width: 600px) {
+    grid-gap: 3vw;
+    grid-template-areas: 
+      "header header"
+      ". .";
+  }
+
+  @media only screen and (min-width: 1200px) {
+    grid-gap: 40px;
+  }
+}
+
+.title {
+  grid-area: header;
+}
