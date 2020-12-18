@@ -1,9 +1,13 @@
----
-title: 'Git Please: How to force push without being a jerk'
-date: '2020-11-30'
-photo: '/images/anakin.jpg'
-excerpt: "Learn how to force push to git without accidentally overwriting someone else's work!"
----
+import Post from '../../components/post';
+
+export const meta = {
+  title: 'Git Please: How to force push without being a jerk',
+  description: 'Learn how to force push to git without accidentally overwriting someone else\'s work!',
+  date: '2020-11-30',
+  photo: '/images/anakin.jpg'
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
 As the size of a dev team grows, so does the likelihood of someone doing a force push and overwriting someone else's code.
 

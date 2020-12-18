@@ -1,9 +1,13 @@
 @import "variables";
 
 .post {
-  border: 1px solid map-get($palette, border);
   position: relative;
   border-radius: 5px;
+  box-shadow: 5px 7px 23px -1px rgba(0,0,0,0.2);
+}
+
+.postContent {
+  padding: 0 24px 24px;
 }
 
 .link {
