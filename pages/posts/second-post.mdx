@@ -1,8 +1,16 @@
----
-title: 'The Second Post'
-date: '2020-12-03'
-photo: '/images/anakin.jpg'
-excerpt: 'My second post ever!'
----
+import Post from '../../components/post';
 
-# This is the second post
+export const meta = {
+  title: 'The Second Post',
+  description: 'The description!',
+  date: '2020-12-03',
+  photo: {
+    url: '/images/anakin.jpg',
+    width: 1000,
+    height: 425
+  }
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+A new beginning

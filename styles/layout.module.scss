@@ -1,5 +1,24 @@
 .siteWrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
   max-width: 1040px;
-  padding: 0;
+  padding: 36px 0 0;
   margin: 0 auto;
+  width: 100%;
+}
+
+.noSpacing {
+  @media only screen and (max-width: 1040px) {
+    padding-top: 0;
+  }
+}
+
+.siteFooter {
+  text-align: center;
+  padding: 36px 24px 24px;
+  margin-top: auto
 }

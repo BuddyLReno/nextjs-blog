@@ -4,7 +4,7 @@ import styles from '../styles/home.module.scss'
 
 export default function Home() {
   return (
-    <Layout noNav>
+    <Layout noNav noFooter noSpacing>
       <div className={styles.centering}>
         <div className="content">
           <h1 className={styles.title}>Hi, I'm Buddy&nbsp;Reno<b className={styles.fancy}>.</b></h1>
