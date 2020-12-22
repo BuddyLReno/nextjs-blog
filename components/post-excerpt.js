@@ -9,12 +9,16 @@ export default function PostExcerpt ({ post }) {
   return (
     <article className={styles.post}>
       {meta.photo.url ? (
-        <Image src={meta.photo.url}
-               className={styles.thumbnail}
-               width={meta.photo.width}
-               height={meta.photo.height}
-               objectFit="cover" />
-      ) : ('')}
+        <>
+          <div className={styles.thumbnailContainer}>
+            <Image src={meta.photo.url}
+                className={styles.thumbnail}
+                width={meta.photo.width}
+                height={meta.photo.height}
+                objectFit="cover" />
+          </div>
+        </>
+      ) : (<></>)}
       <div className={styles.postContent}>
         <Link href={`/posts${slug}`}>
           <a className={styles.link}>

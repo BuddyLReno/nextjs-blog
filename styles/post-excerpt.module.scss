@@ -26,6 +26,11 @@
   }
 }
 
+.thumbnailContainer {
+  max-height: 200px;
+  overflow: hidden;
+}
+
 .thumbnail {
   border-radius: 5px 5px 0 0;
 }

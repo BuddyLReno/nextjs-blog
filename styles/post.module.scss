@@ -6,6 +6,11 @@
   position: relative;
 }
 
+.photoContainer {
+  max-height: 500px;
+  overflow: hidden;
+}
+
 .header {
   max-width: 800px;
   margin: 36px auto 24px;
