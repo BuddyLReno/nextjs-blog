@@ -1,7 +1,18 @@
+import { MDXProvider } from '@mdx-js/react'
+import CodeBlock from '../components/code-block';
 import '../styles/globals.scss'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const components = {
+  pre: props => <div {...props} />,
+  code: CodeBlock
 }
 
-export default MyApp
+function MyApp({ Component, pageProps }) {
+  return (
+    <MDXProvider components={components}>
+      <Component {...pageProps} />
+    </MDXProvider>
+  )
+}
+
+export default MyApp;
