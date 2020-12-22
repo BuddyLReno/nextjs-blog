@@ -1,33 +1,57 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import PostDate from '../components/post-date';
-import styles from '../styles/post-excerpt.module.scss';
+import Link from "next/link";
+import Image from "next/image";
+import PostDate from "../components/post-date";
+import ExternalLinkIcon from "../public/images/external-link.svg";
+import styles from "../styles/post-excerpt.module.scss";
 
-export default function PostExcerpt ({ post }) {
+export default function PostExcerpt({ post }) {
   const { slug, meta } = post;
+  const isExternal = meta.hasOwnProperty("link") ? true : false;
+
+  function buildLink() {
+
+    const attributes = {
+      title: meta.title,
+      rel: isExternal ? 'noopener noreferrer' : '',
+      target: isExternal ? '_blank' : '',
+    };
+
+    return (
+      <a {...attributes} className={styles.link}>
+        <h1 className={styles.title}>{meta.title}</h1>
+        {isExternal ? (
+          <ExternalLinkIcon className={styles.externalLinkIcon} />
+        ) : (
+          <></>
+        )}
+      </a>
+    );
+  }
 
   return (
     <article className={styles.post}>
       {meta.photo.url ? (
         <>
           <div className={styles.thumbnailContainer}>
-            <Image src={meta.photo.url}
-                className={styles.thumbnail}
-                width={meta.photo.width}
-                height={meta.photo.height}
-                objectFit="cover" />
+            <Image
+              src={meta.photo.url}
+              className={styles.thumbnail}
+              width={meta.photo.width}
+              height={meta.photo.height}
+              objectFit="cover"
+            />
           </div>
         </>
-      ) : (<></>)}
+      ) : (
+        <></>
+      )}
       <div className={styles.postContent}>
-        <Link href={`/posts${slug}`}>
-          <a className={styles.link}>
-            <h1 className={styles.title}>{meta.title}</h1>
-          </a>
+        <Link href={isExternal ? meta.link : `/posts${slug}`}>
+          {buildLink()}
         </Link>
         <p className={styles.excerpt}>{meta.description}</p>
         <footer className={styles.footer}>
-        <PostDate classname={styles.publishDate} dateString={meta.date} />
+          <PostDate classname={styles.publishDate} dateString={meta.date} />
         </footer>
       </div>
     </article>

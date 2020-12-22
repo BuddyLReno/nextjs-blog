@@ -16,13 +16,28 @@
 }
 
 .link {
+  position: relative;
   display: block;
-  border: none;
   transition: color 250ms ease-in-out;
+  border-bottom: 1px solid map-get($palette, border);
+  margin-bottom: 16px;
 
   &:hover {
-    border: none;
     color: map-get($palette, accent);
+    border-bottom-color: map-get($palette, border);
+  }
+}
+
+.externalLinkIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  position: absolute;
+  top: 5px;
+  display: none;
+
+  [href^=http] & {
+    display: inline-block;
   }
 }
 
@@ -41,12 +56,14 @@
 }
 
 .title {
-  border-bottom: 1px solid map-get($palette, border);
-  padding-bottom: 0.833rem;
   font-size: 1.333rem;
   margin: 0 0 16px;
   color: inherit;
   line-height: 1.1;
+
+  [href^=http] & {
+    margin-left: 28px;
+  }
 }
 
 .excerpt {
