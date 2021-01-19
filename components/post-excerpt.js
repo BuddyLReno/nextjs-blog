@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import PostDate from "../components/post-date";
 import ExternalLinkIcon from "../public/images/external-link.svg";
 import styles from "../styles/post-excerpt.module.scss";
@@ -33,13 +32,7 @@ export default function PostExcerpt({ post }) {
       {meta.photo.url ? (
         <>
           <div className={styles.thumbnailContainer}>
-            <Image
-              src={meta.photo.url}
-              className={styles.thumbnail}
-              width={meta.photo.width}
-              height={meta.photo.height}
-              objectFit="cover"
-            />
+            <img src={meta.photo.url} className={styles.thumbnail} width={meta.photo.width} height={meta.photo.height} />
           </div>
         </>
       ) : (

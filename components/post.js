@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Layout from "./layout";
-import Image from "next/image";
 import PostDate from "../components/post-date";
 import styles from "../styles/post.module.scss";
 
@@ -11,13 +10,7 @@ export default function Post({ children, meta }) {
         <article className={styles.post}>
           {meta.photo.url ? (
             <div className={styles.photoContainer}>
-              <Image
-                src={meta.photo.url}
-                width={meta.photo.width}
-                height={meta.photo.height}
-                layout="responsive"
-                objectFit="cover"
-              />
+              <img src={meta.photo.url} width={meta.photo.width} height={meta.photo.height} />
             </div>
           ) : (
             <></>
