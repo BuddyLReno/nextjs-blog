@@ -7,7 +7,7 @@ export default function Header() {
       <div className={styles.headerWrapper}>
         <h1 className={styles.title}>
           <Link href="/">
-            <a>@BuddyLReno</a>
+            <a>Buddy Reno</a>
           </Link>
         </h1>
         <nav className={styles.nav}>
