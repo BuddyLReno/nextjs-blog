@@ -1,3 +1,4 @@
+const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/
@@ -9,6 +10,10 @@ const config = {
       test: /\.svg$/,
       use: ['@svgr/webpack']
     });
+
+    // add root of site directory to use imports like:
+    // import thing from 'components/thing';
+    config.resolve.modules.push(path.resolve('./'));
 
     return config;
   },
