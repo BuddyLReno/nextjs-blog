@@ -1,35 +1,5 @@
 @import "../styles/variables";
 
-.centering {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 0 24px;
-}
-
-.title {
-  font-size: 3rem;
-
-  @media only screen and (min-width: 600px) {
-    font-size: 5rem;
-  }
-}
-
-.description {
-  font-size: 1.5rem;
-  line-height: 1.1;
-  margin-bottom: 36px;
-
-  @media only screen and (min-width: 600px) {
-    font-size: 3rem;
-  }
-}
-
-.fancy {
-  color: map-get($palette, accent);
-}
-
 .nav {
   ul {
     list-style: none;
