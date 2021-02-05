@@ -10,6 +10,7 @@ export default function Layout({children, noNav, noSpacing, noFooter}) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow"></meta>
       </Head>
       <div className={styles.siteWrapper}>
         {nav}
