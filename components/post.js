@@ -5,10 +5,7 @@ import PostDate from "../components/post-date";
 import styles from "../styles/post.module.scss";
 
 export default function Post({ children, meta }) {
-  function photoLink(url) {
-    return `https://buddyreno.dev${url}`
-  }
-
+  
   return (
     <>
       {console.log(meta)}
