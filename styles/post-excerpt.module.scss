@@ -28,19 +28,6 @@
   }
 }
 
-.externalLinkIcon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  position: absolute;
-  top: 5px;
-  display: none;
-
-  [href^=http] & {
-    display: inline-block;
-  }
-}
-
 .thumbnailContainer {
   max-height: 200px;
   overflow: hidden;

@@ -19,7 +19,7 @@ export default function PostExcerpt({ post }) {
       <a {...attributes} className={styles.link}>
         <h1 className={styles.title}>{meta.title}</h1>
         {isExternal ? (
-          <ExternalLinkIcon className={styles.externalLinkIcon} />
+          <ExternalLinkIcon className="h-5 w-5 top-1 inline-block absolute fill-current" />
         ) : (
           <></>
         )}
