@@ -12,15 +12,18 @@
     "@mdx-js/react": "^1.6.22",
     "@next/mdx": "^10.0.3",
     "@svgr/webpack": "^5.5.0",
+    "autoprefixer": "^10.2.4",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
     "next": "10.0.3",
     "next-compose-plugins": "^2.2.1",
+    "postcss": "^8.2.4",
     "prism-react-renderer": "^1.1.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "responsive-loader": "^2.3.0",
     "sass": "^1.29.0",
-    "sharp": "^0.27.0"
+    "sharp": "^0.27.0",
+    "tailwindcss": "^2.0.2"
   }
 }
