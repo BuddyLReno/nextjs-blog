@@ -1,7 +1,6 @@
 import Link from "next/link";
 import PostDate from "../components/post-date";
 import ExternalLinkIcon from "../public/images/external-link.svg";
-import styles from "../styles/post-excerpt.module.scss";
 
 export default function PostExcerpt({ post }) {
   const { slug, meta } = post;
@@ -16,10 +15,10 @@ export default function PostExcerpt({ post }) {
     };
 
     return (
-      <a {...attributes} className={styles.link}>
-        <h1 className={styles.title}>{meta.title}</h1>
+      <a {...attributes} className="relative block border-b mb-4 border-gray-200 transition-colors duration-200 hover:text-purple hover:border-gray-200">
+        <h1 className={`text-xl mb-4 leading-5 ${isExternal ? 'ml-6' : ''}`}>{meta.title}</h1>
         {isExternal ? (
-          <ExternalLinkIcon className="h-5 w-5 top-1 inline-block absolute fill-current" />
+          <ExternalLinkIcon className="h-4 w-4 top-1 inline-block absolute fill-current" />
         ) : (
           <></>
         )}
@@ -28,23 +27,23 @@ export default function PostExcerpt({ post }) {
   }
 
   return (
-    <article className={styles.post}>
+    <article className="relative rounded-md flex flex-col shadow-xl">
       {meta.photo.url ? (
         <>
-          <div className={styles.thumbnailContainer}>
-            <img src={meta.photo.url} className={styles.thumbnail} width={meta.photo.width} height={meta.photo.height} />
+          <div className="max-h-48 overflow-hidden">
+            <img src={meta.photo.url} className="rounded-t" width={meta.photo.width} height={meta.photo.height} />
           </div>
         </>
       ) : (
         <></>
       )}
-      <div className={styles.postContent}>
+      <div className="flex flex-col px-6 pt-6 pb-4 flex-1">
         <Link href={isExternal ? meta.link : `/posts${slug}`}>
           {buildLink()}
         </Link>
-        <p className={styles.excerpt}>{meta.description}</p>
-        <footer className={styles.footer}>
-          <PostDate classname={styles.publishDate} dateString={meta.date} />
+        <p className="mt-0 mx-0 mb-10 leading-6">{meta.description}</p>
+        <footer className="mt-auto">
+          <PostDate classname="uppercase text-xs text-gray-400" dateString={meta.date} />
         </footer>
       </div>
     </article>
