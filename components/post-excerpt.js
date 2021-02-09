@@ -16,7 +16,7 @@ export default function PostExcerpt({ post }) {
 
     return (
       <a {...attributes} className="relative block border-b mb-4 border-gray-200 transition-colors duration-200 hover:text-purple hover:border-gray-200">
-        <h1 className={`text-xl mb-4 leading-5 ${isExternal ? 'ml-6' : ''}`}>{meta.title}</h1>
+        <h1 className={`text-xl mb-4 leading-5 text-current ${isExternal ? 'ml-6' : ''}`}>{meta.title}</h1>
         {isExternal ? (
           <ExternalLinkIcon className="h-4 w-4 top-1 inline-block absolute fill-current" />
         ) : (

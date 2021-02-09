@@ -5,6 +5,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
+      current: 'currentColor',
       gray: colors.coolGray,
       purple: {
         DEFAULT: '#753AD8'
