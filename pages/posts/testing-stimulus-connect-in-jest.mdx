@@ -1,0 +1,124 @@
+import Post from 'components/post';
+
+export const meta = {
+  title: 'Testing The Stimulus Connect Method In Jest',
+  slug: 'testing-stimulus-connect-method-in-jest',
+  description: 'Testing Stimulus JS in Jest has a few gotchas. Once gotcha, is waiting to run your expectations after Stimulus has run the connect method. This article will show you how to wait for the connect method.',
+  date: '2021-05-24',
+  photo: {
+    url: '/images/frustrated-man-computer.jpg',
+    width: 1040,
+    height: 500
+  }
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+I've become a big fan of Stimulus JS. I enjoy the ease with which it enables me to write small packets of functionality and "sprinkle" them throughout a site. In my rails app, I use Jest for all my javascript testing. Testing Stimulus controllers with Jest isn't too difficult but does require a little bit of setup. Once you've written a few tests, you'll probably have done something similar to this.
+
+```javascript
+describe('StimulusController', () => {
+  beforeEach(() => {
+    // Start Stimulus
+    // insert DOM html
+  });
+
+  afterEach(() => {
+    // reset dom
+  });
+
+  describe('clicking some link', () => {
+    it('does a thing', () => {
+      // setup spies or what not
+
+      // click link
+
+      // expectations
+    });
+  });
+});
+```
+
+_If you haven't set up a Stimulus test in Jest, see my friend [Damon Bauer's post](https://damonbauer.dev/posts/testing-stimulus-with-jest/) on the topic._
+
+This works pretty well for any method that you're testing that requires an action to be taken with the dom. Where this gets hairy is when you need to test the `connect` method. This method fires as a result of adding the html to the DOM. This might lead you to try creating an async method that mounts the dom to the html and then awaiting that method. 
+
+```javascript
+const startStimulus = () => { /* startup stimulus */ }
+
+const mountDom = async (html) => { /* insert html body */ }
+
+describe('Controller', () => {
+  describe('connect method', () => {
+    it('does a thing', async () => {
+      startStimulus();
+
+      await mountDom('some html');
+
+      // run expectations
+    });
+  });
+});
+```
+
+Unfortunately, this won't work. The test has to wait for Stimulus' `connect` method to finish processing not wait for the html to be inserted. The `connect` method happens asynchronusly to your own javascript. There isn't a way to await that method.
+
+Because we're unable to tell our test to await the connect method, as soon as we insert the dom and that function is finished, it runs the expectations immediately. The expectations then fail because the code we're trying to test in the `connect` method hasn't run yet.
+
+There's an old trick in javascript using `setTimeout` that lets you force the code within to be placed at the end of the current call stack.
+
+```javascript
+it('does a thing', () => {
+  startStimulus();
+
+  mountDom('some html');
+
+  setTimeout(() => {
+    // expectations
+  }, 0);
+});
+```
+
+At first you'll celebrate! The test passes! This is actually a false positive. What happens is that the `setTimeout` causes the function running the expectations to be taken out of the cycle to be run later. The function moves on with its execution. The `it` block ends and closes. Meanwhile the expectation function fires and executes. It encounters a failure and has nothing to report back to because the `it` block has already closed. Jest by default, reports a successful test when it doesn't contain any expectations. This is a problem if the expectations actually contain an error. It will never be reported as a failure.
+
+So... how do we make jest wait for the expectations to run? Enter the [`done` callback](https://jestjs.io/docs/asynchronous#callbacks).
+
+Jest has a handy feature that allows you supply a single argument for the `it` block function called `done`. Jest will wait until that function is called before delcaring the test complete, or it fails with a timeout error. Modify your test like this:
+
+```javascript
+it('does a thing', (done) => {
+  startStimulus();
+
+  mountDom('some html');
+
+  setTimeout(() => {
+    // expectations
+    done();
+  }, 0);
+});
+```
+
+Boom! Jest will now properly wait until the expectations have run before declaring this test function finished giving the expectations time to report back. Although there's one more caveat... If there actually _is_ an error, Jest will barf out a bunch of code in your terminal that can sometimes just be a giant stack trace. This can exceed your buffer limit in your terminal and prevent you from seeing the actual error that occurred. Thankfully, there's an easy way around that by catching the error and sending it back with the `done` callback.
+
+```javascript
+it('does a thing', (done) => {
+  startStimulus();
+
+  mountDom('some html');
+
+  setTimeout(() => {
+    try {
+      //expectations
+      done();
+    } catch (error) {
+      done(error);
+    }
+  });
+});
+```
+
+That will report the error back to jest in the event of a failure.
+
+If you've got other ways of handling this, I'd love to see it! I know there's some improvements to be made considering stimulus' testability. I'm still having issues trying to get the `disconnect` method to fire in Jest. Reach out to me on socials if you've got any ideas or improvements.
+
+jest barfs out a giant stack trace that exceeds buffer length in your terminal. Which means you get a bunch of code and you can't see what the error was.
