@@ -1,7 +1,7 @@
 # example netlify.toml
 [build]
   base = "./"
-  command = "CI=next build"
+  command = "CI= next build"
   functions = "functions"
   publish = "./.next"
 
