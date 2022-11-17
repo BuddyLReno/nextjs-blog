@@ -10,7 +10,7 @@ export default function Posts() {
   return (
     <>
       <PageTitle/>
-      <Layout>
+      <Layout noSpacing>
         <section className={styles.articles}>
           <h1 className={styles.title}>Posts</h1>
           {posts.map((post) => (

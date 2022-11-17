@@ -10,10 +10,10 @@ export default function About() {
       <Layout>
         <h2>About Me</h2>
         <div className={styles.introParagraph}>
-          <img className={styles.profileImage} src="/images/profile.jpg"/>
-          <p>Hello, I'm Buddy Reno! I've been doing web development for 16 years now and I 
-            absolutely love it. Javascript and CSS are my favorite pieces of tech to work with.
-          </p>
+          <img className={styles.profileImage} src="/images/me-2021.jpg"/>
+          <p>Hello, I'm Buddy Reno! I've been hacking at websites for almost 20 years and absolutely love it. 
+          Currently making cool stuff at Click Funnels. <a target="_blank" href="https://www.clickfunnels.com/careers">Come work with me</a>!</p>
+          <p>You can also find me on <a href="https://www.linkedin.com/in/buddy-reno-19532156/" target="_blank">LinkedIn</a>.</p>
         </div>
       </Layout>
     </>

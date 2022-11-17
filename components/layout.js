@@ -17,7 +17,7 @@ export default function Layout({children, noNav, noSpacing, noFooter}) {
         <main className={`${styles.mainContent} ${noSpace}`}>{children}</main>
         {!noFooter ? (
           <footer className={styles.siteFooter}>
-            <p>&copy; Buddy Reno | 2021</p>
+            <p>&copy; Buddy Reno | 2022</p>
           </footer>
         ) : ('')}
       </div>
