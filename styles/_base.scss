@@ -123,6 +123,11 @@ pre {
   }
 }
 
+code {
+  background-color: map-get($palette, border);
+  display: inline-block;
+  padding: 0 0.3em;
+}
 blockquote {
   border-bottom: 1px solid map-get($palette, secondary);
   border-top: 3px solid map-get($palette, secondary);
