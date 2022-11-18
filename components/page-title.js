@@ -9,6 +9,7 @@ export default function PageTitle({ title = '' }) {
     <>
       <Head>
         <title key="page-title">{format(title)}</title>
+        
       </Head>
     </>
   );
