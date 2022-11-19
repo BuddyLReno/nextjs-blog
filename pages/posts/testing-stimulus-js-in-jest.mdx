@@ -1,7 +1,7 @@
 import Post from 'components/post';
 
 export const meta = {
-  title: 'Testing Stimulus JS in Jest',
+  title: 'Debugging, Lifecycle Methods, Events: Testing Stimulus JS in Jest',
   slug: 'testing-stimulus-js-in-jest',
   description: 'Testing Stimulus JS can be a pain. This guide will help you scale the mountain and be writing tests in no time.',
   date: '2022-11-18',
@@ -322,7 +322,7 @@ test('calling markStable enables the link target', () => {
 })
 ```
 
-## Testing The Connect Method
+## Testing The Connect Lifecycle Method
 
 I've written about this [previously](/posts/testing-stimulus-connect-in-jest) and while most of that content still stands, I use `Promise.resolve()` instead of `setTimeouts` now. If you need to test a stimulus controller that uses a `setTimeout` you could run into some issues with mocks that can make it a pain to test.
 
